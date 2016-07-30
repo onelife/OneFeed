@@ -1,6 +1,12 @@
 /**
+ * @project ArticlePeel
+ * @author onelife <onelife.real@gmail.com>
+ * @license See LICENSE file included in this distribution.
+ */
+
+/**
  * Entry point of web app
- * @param {associativeArray} e - Check "url" and "format"
+ * @param {associativeArray} e - Recognize "url" and "format".
  * @return {object or string} HtmlOutput object or zipped json string
  */
 function doGet(e) {
