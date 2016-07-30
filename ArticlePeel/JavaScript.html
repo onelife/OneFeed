@@ -1,0 +1,88 @@
+<!--
+  @project ArticlePeel
+  @author onelife <onelife.real@gmail.com>
+  @license See LICENSE file included in this distribution.
+ */
+//-->
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js">
+</script>
+
+<script>
+$('document').ready(function(){
+  google.script.run.withSuccessHandler(peelArticle).fetchArticle();
+});
+
+/**
+ * Peel the article at client side
+ * @param {array} url_html_config - [url, html, config]
+ */
+function peelArticle(url_html_config) {
+  console.log('>>>');
+  console.log( "You are running jQuery version: " + $.fn.jquery);
+  console.log('<<<');
+
+  var url = url_html_config[0];
+  var html = url_html_config[1];
+  var config = url_html_config[2];
+  if (config.plan == 'a') {
+    // get elements
+    var $title_src = $(html).find(config.title);
+    var $content_src = $(html).find(config.body);
+
+    // clean elements
+    $content_src.find('script').remove();
+    $content_src.find('style').remove();
+    for (var i in config['exclude']) {
+      $content_src.find(config['exclude'][i]).remove();
+    }
+    for (var i in config['exclude_parent']) {
+      $content_src.find(config['exclude_parent'][i]).parent().remove();
+    }
+
+    // fix elements
+    var protocol = url.split("/");
+    protocol = protocol[0]+'//'+protocol[2];
+    $title_src.find('img[src^="/"]').attr('src', function(i, v) {
+      return protocol+v;
+    });
+
+    // set elements
+    var $link_dst = $('#link_dst').html('<p><a href="'+url+'">'+url+'</a></p>');
+    var $title_dst = $('#title_dst').html($title_src.html());
+    var $content_dst = $('#content_dst').html($content_src.html());
+
+  } else if (config.plan == 'b') {
+    // get data
+    var code = html.match(new RegExp(config.code[0]))[1];
+    eval(code);
+    var content = eval(config.code[1]);
+    var dict = JSON.parse(config.keys);
+    var output = {};
+    for (var i in dict) {
+      output[i] = eval(dict[i]);
+    }
+//    console.log(output);
+
+    // set elements
+    var $link_dst = $('#link_dst').html('<p><a href="'+url+'">'+url+'</a></p>');
+    var $title_dst = $('#title_dst').html('<h1>'+output.title+'</h1>');
+    var body = '<p>Author: '+output.author+'<br>Date: '+output.date+'</p>';
+    if (output.source) {
+      var source = [];
+      for (var i in output.source) {
+        source.push('<a href="'+output.source[i]+'">'+output.source[i]+'</a>');
+      }
+      body += '<p>Source: '+source.join(', ')+'</p>';
+    }
+    body += '<p>Tag: '+output.tag.join(', ')+'</p>';
+    body += '<p><img alt="'+output.title+'" src="'+output.picture+'"></p>';
+    var $content_dst = $('#content_dst').html(body+output.body);
+
+  } else {
+    var $link_dst = $('#link_dst').html('<p><a href="'+url+'">'+url+'</a></p>');
+    var $content_dst = $('#content_dst').html(html);
+  }
+}
+
+</script>
