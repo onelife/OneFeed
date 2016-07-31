@@ -4,20 +4,23 @@
  * @license See LICENSE file included in this distribution.
  */
 
- /** @global */
-var Setting = {};
+/** @const {string} */
+var DATA_SHEET = 'YOUR_SPREADSHEET_ID';
 
-// app
-Setting.dataSheet = 'YOUR_SPREADSHEET_ID';
+/** @global */
+var Setting = {
+  // app
+  dataSheet: DATA_SHEET,
 
-// project
-Setting.moduleName = 'ArticlePeel';
-Setting.configTab = 'Peel';
-Setting.configXmlTab = 'PeelByXml';
+  // project
+  moduleName: 'ArticlePeel',
+  configTab: 'Peel',
+  configXmlTab: 'PeelByXml',
 
-// common
-Setting.timezone = 'GMT+8';
-Setting.reportSheet = Setting.dataSheet;
-Setting.logTab = 'Log';
-Setting.debugTab = 'Debug';
-Setting.errorTab = 'Error';
+  // common
+  timezone: 'GMT+8',
+  reportSheet: DATA_SHEET,
+  logTab: 'Log',
+  debugTab: 'Debug',
+  errorTab: 'Error',
+};

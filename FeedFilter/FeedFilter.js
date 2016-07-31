@@ -4,16 +4,27 @@
  * @license See LICENSE file included in this distribution.
  */
 
- /** @global */
+/** @global */
 FeedFilter = {};
 
 /**
  * Fetch RSS feed
  * @param {associativeArray} config - url, filter, yeslist, nolist, peel.
+ * @param {boolean} opt_peel - Peel option which overrides config.peel, default is null.
  * @return {string} XML format RSS feed
  */
-FeedFilter.fetchRss = function(config) {
+FeedFilter.fetchRss = function(config, opt_peel) {
   var charset;
+
+  // check config
+  if (!config.url) {
+    return null;
+  }
+
+  // override config.peel
+  if (opt_peel != null) {
+    config.peel = opt_peel;
+  }
 
   // fetch RSS
   try {
@@ -59,7 +70,8 @@ FeedFilter.fetchRss = function(config) {
       // loop through the attributes of a chaitemnnel
       for (var j in iChilds) {
         // check against filter
-        if (config.filter.indexOf(iChilds[j].getName()) != -1) {
+        if (config.filter && config.nolist &&
+            config.filter.indexOf(iChilds[j].getName()) != -1) {
           for (var k in config.nolist) {
             var text = iChilds[j].getText();
             if (text.search(config.nolist[k]) != -1) {

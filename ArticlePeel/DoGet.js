@@ -11,10 +11,10 @@
  */
 function doGet(e) {
   // check parameters
-  if (typeof e === 'undefined' || typeof e.parameter.url === 'undefined') {
+  if (!e || !e.parameter.url) {
     return null;
   }
-  if (typeof e.parameter.format === 'undefined') {
+  if (!e.parameter.format) {
     // default format
     e.parameter.format = 'html';
   }

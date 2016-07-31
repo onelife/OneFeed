@@ -6,7 +6,7 @@
 
 /**
  * Entry point of web app
- * @param {associativeArray} e - Recognize "feed".
+ * @param {associativeArray} e - Recognize "feed", "peel".
  * @return {object} TextOutput object (RSS)
  */
 function doGet(e) {
@@ -18,9 +18,13 @@ function doGet(e) {
     // fetch and filter RSS
     if (e && e.parameter.feed) {
       Reporter.log(e.parameter.feed);
+      var peel = null;
+      if (e.parameter.peel) {
+        peel = e.parameter.peel;
+      }
       for (var item = 0; item < config.length; item++) {
         if (e.parameter.feed == config[item]['name']) {
-          content = FeedFilter.fetchRss(config[item]);
+          content = FeedFilter.fetchRss(config[item], peel);
           break;
         }
       }

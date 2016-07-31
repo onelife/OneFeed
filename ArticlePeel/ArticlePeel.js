@@ -4,7 +4,7 @@
  * @license See LICENSE file included in this distribution.
  */
 
- /** @global */
+/** @global */
 var ArticlePeel = {};
 ArticlePeel.prop = PropertiesService.getUserProperties();
 
