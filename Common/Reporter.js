@@ -1,5 +1,5 @@
 /**
- * @author onelife <onelife.real@gmail.com>
+ * @author onelife <onelife.real(AT)gmail.com>
  * @license See LICENSE file included in this distribution.
  */
 

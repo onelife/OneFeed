@@ -1,12 +1,14 @@
 /**
- * @project FeedDeliver
- * @author onelife <onelife.real@gmail.com>
+ * @file FeedDeliver project
+ * @author onelife <onelife.real(AT)gmail.com>
  * @license See LICENSE file included in this distribution.
  */
 
-/** @const {string} */
+/** @const {string} DATA_SHEET - Your SpreadSheet ID */
 var DATA_SHEET = 'YOUR_SPREADSHEET_ID';
+/** @const {string} FEED_APP_URL - Your feed App url */
 var FEED_APP_URL = 'https://script.google.com/macros/s/YOUR_FEED_APP_ID/exec';
+/** @const {string} PEEL_APP_URL - Your peel App url */
 var PEEL_APP_URL = 'https://script.google.com/macros/s/YOUR_PEEL_APP_ID/exec';
 
 /** @global */

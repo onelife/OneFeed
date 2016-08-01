@@ -1,6 +1,6 @@
 /**
  * @project FeedFilter
- * @author onelife <onelife.real@gmail.com>
+ * @author onelife <onelife.real(AT)gmail.com>
  * @license See LICENSE file included in this distribution.
  */
 
@@ -12,7 +12,7 @@ var PEEL_APP_URL = 'https://script.google.com/macros/s/YOUR_PEEL_APP_ID/exec';
 var Setting = {
   // dependence
   peelApp: PEEL_APP_URL,
-  
+
   // app
   dataSheet: DATA_SHEET,
 

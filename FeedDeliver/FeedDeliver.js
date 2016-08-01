@@ -1,14 +1,16 @@
 /**
- * @project FeedDeliver
- * @author onelife <onelife.real@gmail.com>
+ * @file FeedDeliver project
+ * @author onelife <onelife.real(AT)gmail.com>
  * @license See LICENSE file included in this distribution.
  */
 
-/** @global */
+/** @namespace FeedDeliver */
 FeedDeliver = {};
 
 /**
  * Deliver articles to target
+ * @function to
+ * @memberof FeedDeliver
  * @param {string} target - Recognize "drive" and "email".
  */
 FeedDeliver.to = function(target, opt_peel) {
@@ -73,6 +75,8 @@ FeedDeliver.to = function(target, opt_peel) {
 
 /**
  * Save article to Google Drive
+ * @function saveToDrive
+ * @memberof FeedDeliver
  * @param {associativeArray} content - Article content.
  * @param {associativeArray} config
  */
@@ -87,7 +91,7 @@ FeedDeliver.saveToDrive = function(content, config) {
   Logger.log('Title: '+title);
 
   // save the article
-  var page = template.page.replace(
+  var page = Template.page.replace(
       /<\?= (\w+) \?>/ig,
       function(match, key, offset) {
         return content[key];
@@ -107,7 +111,9 @@ FeedDeliver.saveToDrive = function(content, config) {
 }
 
 /**
- * Save article to Google Drive
+ * Send article to email address
+ * @function sendToEmail
+ * @memberof FeedDeliver
  * @param {associativeArray} content - Article content.
  * @param {associativeArray} config
  */
@@ -122,22 +128,32 @@ FeedDeliver.sendToEmail = function(content, config) {
   Logger.log('Title: '+title);
 
   // send email
+  var page = Template.page.replace(
+      /<\?= (\w+) \?>/ig,
+      function(match, key, offset) {
+        return content[key];
+      });
   MailApp.sendEmail(
       config['deliverto'],
       '@'+config['name']+' '+title,
       '',
-      {htmlBody:content.content});
+      {htmlBody:page});
   Logger.log("Sent to: "+config['deliverto']);
 }
 
 /**
- * Unit test
+ * Test of FeedDeliver.saveToDrive
+ * @function testSaveToDrive
  */
 function testSaveToDrive() {
   FeedDeliver.to('drive');
   Logger.log('testSaveToDrive');
 }
 
+/**
+ * Test of FeedDeliver.testSendToEmail
+ * @function testSendToEmail
+ */
 function testSendToEmail() {
   FeedDeliver.to('email');
   Logger.log('testSendToEmail');

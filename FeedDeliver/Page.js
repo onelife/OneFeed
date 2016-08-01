@@ -1,11 +1,12 @@
 /**
- * @project FeedDeliver
- * @author onelife <onelife.real@gmail.com>
+ * @file FeedDeliver project
+ * @author onelife <onelife.real(AT)gmail.com>
  * @license See LICENSE file included in this distribution.
  */
 
 /** @global */
-var template = {
+var Template = {
+  /** @const {string} page */
   page: '<!DOCTYPE html>' +
       '<html>' +
         '<head>' +
