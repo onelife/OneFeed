@@ -1,16 +1,20 @@
 /**
+ * @file Common
  * @author onelife <onelife.real(AT)gmail.com>
  * @license See LICENSE file included in this distribution.
  */
 
-/** @global */
+/** @namespace DriveOp */
 var DriveOp = {};
 
 /**
- * Get config information from file (Google Spreadsheet)
+ * Get config information from file (Google Sheets)
+ * @function getConfig
+ * @memberof DriveOp
  * @param {string} tab - Tab name.
  * @param {associativeArray} opt_filter - Filter: {'column_name':
- *     'code_feed_to_eval()'}. The column_value can be referenced as "x".
+ *     'code_feed_to_eval'}. The column_value is referenced as "x" in
+ *     code_feed_to_eval.
  */
 DriveOp.getConfig = function(tab, opt_filter) {
   var sheet = SpreadsheetApp.openById(Setting.dataSheet).getSheetByName(tab);
@@ -60,7 +64,9 @@ DriveOp.getConfig = function(tab, opt_filter) {
 }
 
 /**
- * Add record to file (Google Spreadsheet)
+ * Add record to file (Google Sheets)
+ * @function addRecord
+ * @memberof DriveOp
  * @param {string} tab - Tab name.
  * @param {associativeArray} record - Record content.
  */
@@ -81,9 +87,11 @@ DriveOp.addRecord = function(tab, record) {
 }
 
 /**
- * Add record to file (Google Spreadsheet)
+ * Add record to file (Google Sheets)
+ * @function getSubfolder
+ * @memberof DriveOp
  * @param {object} folder - Folder object.
- * @param {string} subfolderName - Record content.
+ * @param {string} subfolderName
  * @return {array} [object_folder, boolean_isNewSubfolder]
  */
 DriveOp.getSubfolder = function(folder, subfolderName) {
@@ -99,7 +107,8 @@ DriveOp.getSubfolder = function(folder, subfolderName) {
 
 
 /**
- * Unit test
+ * Test of DriveOp.getConfig
+ * @function testGetConfig
  */
 function testGetConfig() {
   var url = 'http://www.linuxeden.com/html/news/20160719/167141.html';
@@ -111,6 +120,10 @@ function testGetConfig() {
   Logger.log('testGetConfig');
 }
 
+/**
+ * Test of DriveOp.addRecord
+ * @function testAddRecord
+ */
 function testAddRecord() {
   var record = {
     'date': Utilities.formatDate(

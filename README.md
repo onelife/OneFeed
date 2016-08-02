@@ -1,8 +1,8 @@
 # OneFeed
 OneFeed is a collection of RSS feed tools built with Google App Script, which includes the following apps.
-* FeedFilter ([Deploy guide](../../wiki/Deploy-FeedFilter))
-* ArticlePeel ([Deploy guide](../../wiki/Deploy-ArticlePeel))
-* FeedDeliver ([Deploy guide](../../wiki/Deploy-FeedDeliver))
+* FeedFilter ([Deployment guide](../../wiki/Deploy-FeedFilter))
+* ArticlePeel ([Deployment guide](../../wiki/Deploy-ArticlePeel))
+* FeedDeliver ([Deployment guide](../../wiki/Deploy-FeedDeliver))
 
 ## FeedFilter
 A web app which filters the source RSS

@@ -1,11 +1,12 @@
 /**
- * @project FeedFilter
+ * @file FeedFilter project
  * @author onelife <onelife.real(AT)gmail.com>
  * @license See LICENSE file included in this distribution.
  */
 
 /** @const {string} */
 var DATA_SHEET = 'YOUR_SPREADSHEET_ID';
+/** @const {string} */
 var PEEL_APP_URL = 'https://script.google.com/macros/s/YOUR_PEEL_APP_ID/exec';
 
 /** @global */

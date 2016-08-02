@@ -1,11 +1,12 @@
 /**
- * @project FeedFilter
+ * @file FeedFilter project
  * @author onelife <onelife.real(AT)gmail.com>
  * @license See LICENSE file included in this distribution.
  */
 
 /**
  * Entry point of web app
+ * @function doGet
  * @param {associativeArray} e - Recognize "feed", "peel".
  * @return {object} TextOutput object (RSS)
  */

@@ -1,15 +1,17 @@
 /**
- * @project ArticlePeel
+ * @file ArticlePeel project
  * @author onelife <onelife.real(AT)gmail.com>
  * @license See LICENSE file included in this distribution.
  */
 
-/** @global */
+/** @namespace ArticlePeel */
 var ArticlePeel = {};
 ArticlePeel.prop = PropertiesService.getUserProperties();
 
 /**
  * Parse the charset
+ * @function getCharset
+ * @memberof ArticlePeel
  * @param {string} html - page content.
  * @return {string} charset
  */
@@ -34,8 +36,10 @@ ArticlePeel.getCharset = function(html) {
 }
 
 /**
- * Fetch a article by url
- * @return {array} [url, html, config]
+ * Fetch an article by url
+ * @function fetch
+ * @memberof ArticlePeel
+ * @return {String} The article content as string
  */
 ArticlePeel.fetch = function(url) {
   try {
@@ -61,8 +65,10 @@ ArticlePeel.fetch = function(url) {
 
 /**
  * Fetch and peel the article at server side
+ * @function byXml
+ * @memberof ArticlePeel
  * @param {string} url - Folder object.
- * @return {associativeArray}
+ * @return {associativeArray} The article content as associative array
  */
 ArticlePeel.byXml = function(url) {
   // fetch the url
@@ -175,7 +181,8 @@ ArticlePeel.byXml = function(url) {
 }
 
 /**
- * Unit test
+ * Test of ArticlePeel.byXml
+ * @function testByXml
  */
 // ?url=http://www.linuxeden.com/html/news/20160727/167247.html&format=json
 function testByXml() {

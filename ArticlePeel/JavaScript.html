@@ -1,5 +1,5 @@
 <!--
-  @project ArticlePeel
+  @file  ArticlePeel project
   @author onelife <onelife.real(AT)gmail.com>
   @license See LICENSE file included in this distribution.
  */
@@ -15,6 +15,7 @@ $('document').ready(function(){
 
 /**
  * Peel the article at client side
+ * @function peelArticle
  * @param {array} url_html_config - [url, html, config]
  */
 function peelArticle(url_html_config) {
@@ -62,7 +63,7 @@ function peelArticle(url_html_config) {
     for (var i in dict) {
       output[i] = eval(dict[i]);
     }
-//    console.log(output);
+  //  console.log(output);
 
     // set elements
     var $link_dst = $('#link_dst').html('<p><a href="'+url+'">'+url+'</a></p>');

@@ -1,13 +1,14 @@
 /**
- * @project ArticlePeel
+ * @file ArticlePeel project
  * @author onelife <onelife.real(AT)gmail.com>
  * @license See LICENSE file included in this distribution.
  */
 
 /**
  * Entry point of web app
+ * @function doGet
  * @param {associativeArray} e - Recognize "url" and "format".
- * @return {object or string} HtmlOutput object or zipped json string
+ * @return {object | string} HtmlOutput object or zipped json string
  */
 function doGet(e) {
   // check parameters
@@ -41,6 +42,7 @@ function doGet(e) {
 
 /**
  * Utitlty function called by html template
+ * @function include
  * @param {string} fileName
  * @return {string} File content
  */
@@ -50,6 +52,7 @@ function include(fileName) {
 
 /**
  * Fetch the article called by client side
+ * @function fetchArticle
  * @return {array} [url, html, config]
  */
 function fetchArticle() {

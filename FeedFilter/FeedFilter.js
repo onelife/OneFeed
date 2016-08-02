@@ -1,14 +1,16 @@
 /**
- * @project FeedFilter
+ * @file FeedFilter project
  * @author onelife <onelife.real(AT)gmail.com>
  * @license See LICENSE file included in this distribution.
  */
 
-/** @global */
+/** @namespace FeedFilter */
 FeedFilter = {};
 
 /**
  * Fetch RSS feed
+ * @function fetchRss
+ * @memberof FeedFilter
  * @param {associativeArray} config - url, filter, yeslist, nolist, peel.
  * @param {boolean} opt_peel - Peel option which overrides config.peel, default is null.
  * @return {string} XML format RSS feed
@@ -103,7 +105,8 @@ FeedFilter.fetchRss = function(config, opt_peel) {
 }
 
 /**
- * Unit test
+ * Test of FeedFilter.fetchRss
+ * @function testFetchRss
  */
 function testFetchRss() {
   var config = DriveOp.getConfig(Setting.configTab);
